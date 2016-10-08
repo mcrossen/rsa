@@ -1,0 +1,22 @@
+#!/usr/bin/env ruby
+
+# set up the application path
+$LOAD_PATH.unshift(File.expand_path(
+  File.join(File.dirname(__FILE__), "../lib")
+))
+
+require "rsa"
+require "modularexponent"
+
+keys = RSA::Keys.new
+puts "p: " + keys.p.to_s + "\n\n"
+puts "q: " + keys.q.to_s + "\n\n"
+puts "n: " + keys.n.to_s + "\n\n"
+puts "e: " + keys.e.to_s + "\n\n"
+puts "d: " + keys.d.to_s + "\n\n"
+
+print "challenge encrypt: "
+puts "\nciphertext: " + gets.chomp.to_i.modexp(keys.e, keys.n).to_s + "\n\n"
+
+print "challenge decrypt: "
+puts "\nplaintext: " + gets.chomp.to_i.modexp(keys.d, keys.n).to_s + "\n\n"
