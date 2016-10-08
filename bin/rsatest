@@ -8,15 +8,18 @@ $LOAD_PATH.unshift(File.expand_path(
 require "rsa"
 require "modularexponent"
 
-keys = RSA::Keys.new
+keys = RSA::Keys.new # generate all the RSA values
+# display all the values
 puts "p: " + keys.p.to_s + "\n\n"
 puts "q: " + keys.q.to_s + "\n\n"
 puts "n: " + keys.n.to_s + "\n\n"
 puts "e: " + keys.e.to_s + "\n\n"
 puts "d: " + keys.d.to_s + "\n\n"
 
+# ask for the encryption challenge plaintext
 print "challenge encrypt: "
 puts "\nciphertext: " + gets.chomp.to_i.modexp(keys.e, keys.n).to_s + "\n\n"
 
+# ask for the decryption challenge ciphertext
 print "challenge decrypt: "
 puts "\nplaintext: " + gets.chomp.to_i.modexp(keys.d, keys.n).to_s + "\n\n"

@@ -1,4 +1,5 @@
 module ExtendedEuclidean
+  # find the Greatest Common Denominator of two values
   def self.GCD(a, b)
     larger = a > b ? a : b
     smaller = a > b ? b : a
@@ -9,6 +10,7 @@ module ExtendedEuclidean
     end
   end
 
+  # find the multiplicative inverse of two numbers using the extended euclidean algorithm
   def self.inv_mult(modulus, num)
     last_remainder = modulus.abs
     remainder = num.abs
